@@ -18,7 +18,7 @@ use app\models\Project;
 <div class="box">
     <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
       <div class="box-body">
-        <?= $form->field($task, 'title')->label(yii::t('task', 'submit title'), ['class' => 'control-label bolder blue']) ?>
+        <?= $form->field($task, 'title')->textInput(['value' => time()])->label(yii::t('task', 'submit title'), ['class' => 'control-label bolder blue']) ?>
           <!-- 无trunk时，不需要查看所有分支-->
           <?php if ($nonTrunk) { ?>
               <input type="hidden" id="branch" class="form-control" name="Task[branch]" value="">
