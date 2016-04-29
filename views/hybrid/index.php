@@ -28,18 +28,20 @@ use yii\helpers\Url;
 		var loading = document.getElementById("loading");
 		loading.style.display = "none";
 		window.clearInterval(timer1);
+
+		var title = $('#iframepage').contents().attr('title');
+		$('.breadcrumb .active').html(title);
 	}
 
     jQuery(function($) {
 		function reloadIframe() {
 			var hash = location.hash;
 			var url = hash.replace( /^#/, '' );
-			if (!url) url = "/hybrid/readme";
+			if (!url) url = "about:blank";
 			$("#iframepage").attr("src", url);
 			$('.loading').show();
 
 			reinitIframeEND();
-			$('.breadcrumb .active').html($("#iframepage").contents().attr("title"));
 		}
 
 		$(window).on('popstate', reloadIframe);
