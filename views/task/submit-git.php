@@ -11,7 +11,7 @@ use app\models\Project;
 <div class="box">
     <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
       <div class="box-body">
-        <?= $form->field($task, 'title')->label(yii::t('task', 'submit title'), ['class' => 'control-label bolder blue']) ?>
+        <?= $form->field($task, 'title')->textInput(['value' => time()])->label(yii::t('task', 'submit title'), ['class' => 'control-label bolder blue']) ?>
 
         <!-- 分支选取 -->
         <?php if ($conf->repo_mode == Project::REPO_BRANCH) { ?>
