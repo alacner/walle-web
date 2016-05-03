@@ -31,6 +31,9 @@ use yii\helpers\Url;
 
 		var title = $('#iframepage').contents().attr('title');
 		$('.breadcrumb .active').html(title);
+		
+		var home = $('#iframepage').contents().find('body').data('home');
+                $('.breadcrumb .active').prev().find('a').attr('href', home);
 	}
 
     jQuery(function($) {
