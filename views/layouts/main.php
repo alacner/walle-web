@@ -270,6 +270,35 @@ $userName =  \Yii::$app->user->id ? $user->getName() : '';
 </span>
                     </a>
                 </li>
+                
+<?php
+$hybridConfigFilename = __DIR__.'/../../web/hybrid_root/configs/walle_menu.php';
+$hybridMenus = array();
+if (is_file($hybridConfigFilename)) {
+        $hybridMenus = include $hybridConfigFilename;
+}                              
+?>      
+<?php if ($hybridMenus): ?>
+                <li>
+                    <a href="#" class="dropdown-toggle">
+                        <i class=" icon-beaker"></i>
+                        <span class="menu-text"> 扩展功能 </span>
+                               
+                        <b class="arrow icon-angle-down"></b>
+                    </a>       
+                               
+                    <ul class="submenu" style="display: none;">
+<?php foreach($hybridMenus as $hybridMenu): ?>
+                        <li>
+                            <a href="<?= Url::to('@web/hybrid/#'.$hybridMenu['url']) ?>">
+                                <i class="<?php echo $hybridMenu['icon'];?>"></i>
+                                <?php echo $hybridMenu['name'];?>
+                            </a>                     
+                        </li>                        
+<?php endforeach;?>
+                    </ul>
+                </li>
+<?php endif;?>
             </ul><!-- /.nav-list -->
             <div class="sidebar-collapse" id="sidebar-collapse">
                 <i class="icon-double-angle-right" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
