@@ -26,9 +26,11 @@ class Task extends Ansible {
         $cmd = ['. /etc/profile'];
         $workspace = rtrim(Project::getDeployWorkspace($version), '/');
         $pattern = [
+            '#{ROOT}#',
             '#{WORKSPACE}#',
         ];
         $replace = [
+            rtrim(\Yii::$app->basePath, '/'),
             $workspace,
         ];
 
@@ -55,9 +57,11 @@ class Task extends Ansible {
         $cmd = ['. /etc/profile'];
         $workspace = rtrim(Project::getDeployWorkspace($version), '/');
         $pattern = [
+            '#{ROOT}#',
             '#{WORKSPACE}#',
         ];
         $replace = [
+            rtrim(\Yii::$app->basePath, '/'),
             $workspace,
         ];
 
@@ -109,10 +113,12 @@ class Task extends Ansible {
         $workspace = Project::getTargetWorkspace();
         $version   = Project::getReleaseVersionDir($version);
         $pattern = [
+            '#{ROOT}#',
             '#{WORKSPACE}#',
             '#{VERSION}#',
         ];
         $replace = [
+            rtrim(\Yii::$app->basePath, '/'),
             $workspace,
             $version,
         ];
